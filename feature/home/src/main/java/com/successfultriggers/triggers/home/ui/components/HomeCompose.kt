@@ -19,14 +19,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.successfultriggers.triggers.home.ui.HomeEvent
+import com.successfultriggers.triggers.home.ui.TriggerEvent
 import com.successfultriggers.triggers.data.BaseProEntity
 
 @Composable
 fun HomeCompose(
     modifier: Modifier = Modifier,
     data: List<BaseProEntity>,
-    onEvent: (HomeEvent) -> Unit
+    onEvent: (TriggerEvent) -> Unit
 ) {
     var newItemName by remember { mutableStateOf("") }
 
@@ -34,7 +34,7 @@ fun HomeCompose(
         Row {
             Text("List of Items")
             Spacer(modifier = Modifier.weight(1f))
-            Button(onClick = { onEvent( HomeEvent.DeleteAll) }) {
+            Button(onClick = { onEvent( TriggerEvent.DeleteAll) }) {
                 Text("Delete All")
             }
         }
@@ -43,14 +43,14 @@ fun HomeCompose(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
-                    .clickable {  onEvent( HomeEvent.OnItemClicked(item.todoId)) }
+                    .clickable {  onEvent( TriggerEvent.OnItemClicked(item.todoId)) }
             ) {
                 Text(
                     text = item.title,
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.weight(1f)
                 )
-                Button(onClick = {  onEvent( HomeEvent.DeleteItem(item.todoId)) }) {
+                Button(onClick = {  onEvent( TriggerEvent.DeleteItem(item.todoId)) }) {
                     Text("Delete")
                 }
             }
@@ -68,7 +68,7 @@ fun HomeCompose(
             Button(
                 onClick = {
                     if (newItemName.isNotBlank()) {
-                        onEvent( HomeEvent.AddItem(newItemName))
+                        onEvent( TriggerEvent.AddItem(newItemName))
                         newItemName = ""
                     }
                 },

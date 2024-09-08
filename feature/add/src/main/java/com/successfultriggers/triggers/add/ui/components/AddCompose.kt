@@ -10,19 +10,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.successfultriggers.triggers.add.ui.AddEvent
+import com.successfultriggers.triggers.add.ui.TriggerEvent
 
 @Composable
 fun AddCompose(
     modifier: Modifier = Modifier,
     settings: Map<String, String>,
-    onEvent: (AddEvent) -> Unit
+    onEvent: (TriggerEvent) -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize().padding(16.dp)
     ) {
 
-        Button(onClick = { onEvent(AddEvent.DeleteAllEntries) }) {
+        Button(onClick = { onEvent(TriggerEvent.DeleteAllEntries) }) {
             Text("Delete All Entries")
         }
     }

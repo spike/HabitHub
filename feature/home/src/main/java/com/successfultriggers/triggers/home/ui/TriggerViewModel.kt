@@ -11,35 +11,35 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class TriggerViewModel @Inject constructor(
     private val repository: BaseProRepo
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<CamUIState>(CamUIState.Loading)
-    val uiState: StateFlow<CamUIState> = _uiState
+    private val _uiState = MutableStateFlow<HomeUIState>(HomeUIState.Loading)
+    val uiState: StateFlow<HomeUIState> = _uiState
 
     init {
-        onEvent(HomeEvent.LoadData)
+        onEvent(TriggerEvent.LoadData)
     }
 
-    fun onEvent(event: HomeEvent) {
+    fun onEvent(event: TriggerEvent) {
         when (event) {
-            is HomeEvent.LoadData -> {
+            is TriggerEvent.LoadData -> {
                 loadData()
             }
-            is HomeEvent.AddItem -> {
+            is TriggerEvent.AddItem -> {
                 addItem(event.name)
             }
-            is HomeEvent.DeleteItem -> {
+            is TriggerEvent.DeleteItem -> {
                 deleteItem(event.itemId)
             }
-            is HomeEvent.DeleteAll -> {
+            is TriggerEvent.DeleteAll -> {
                 deleteAll()
             }
-            is HomeEvent.OnRetry -> {
-                onEvent(HomeEvent.LoadData)
+            is TriggerEvent.OnRetry -> {
+                onEvent(TriggerEvent.LoadData)
             }
-            is HomeEvent.OnItemClicked -> {
+            is TriggerEvent.OnItemClicked -> {
                 // Handle item click if needed
             }
         }
@@ -51,7 +51,7 @@ class HomeViewModel @Inject constructor(
                 repository.deleteAll()
                 //onEvent(CamEvent.LoadData)  // Refresh the data after deleting
             } catch (e: Exception) {
-                _uiState.value = CamUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }
@@ -59,12 +59,12 @@ class HomeViewModel @Inject constructor(
     private fun loadData() {
         viewModelScope.launch {
             try {
-                _uiState.value = CamUIState.Loading
+                _uiState.value = HomeUIState.Loading
                 repository.allGetBasePros().collect { data ->
-                    _uiState.value = CamUIState.Success(data = data)
+                    _uiState.value = HomeUIState.Success(data = data)
                 }
             } catch (e: Exception) {
-                _uiState.value = CamUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }
@@ -73,9 +73,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 repository.insert(BasePro(title = name))
-                onEvent(HomeEvent.LoadData)  // Refresh the data after adding
+                onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
-                _uiState.value = CamUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }
@@ -84,9 +84,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 repository.getBaseProById(itemId)
-                onEvent(HomeEvent.LoadData)  // Refresh the data after deleting
+                onEvent(TriggerEvent.LoadData)  // Refresh the data after deleting
             } catch (e: Exception) {
-                _uiState.value = CamUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }

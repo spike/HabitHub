@@ -18,18 +18,18 @@ class AddViewModel @Inject constructor(
     val uiState: StateFlow<AddUiState> = _uiState
 
     init {
-        onEvent(AddEvent.LoadAdd)
+        onEvent(TriggerEvent.LoadTrigger)
     }
 
-    fun onEvent(event: AddEvent) {
+    fun onEvent(event: TriggerEvent) {
         when (event) {
-            is AddEvent.LoadAdd -> {
+            is TriggerEvent.LoadTrigger -> {
                 loadSettings()
             }
-            is AddEvent.UpdateSetting -> {
+            is TriggerEvent.UpdateSetting -> {
                 updateSetting(event.settingKey, event.settingValue)
             }
-            is AddEvent.DeleteAllEntries -> {
+            is TriggerEvent.DeleteAllEntries -> {
                 deleteAllEntries()
             }
         }

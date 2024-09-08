@@ -22,7 +22,7 @@ fun AddUiRoute(
         }
         is AddUiState.Error -> {
             ErrorScreen(errorMessage = uiState.message) {
-                viewModel.onEvent(AddEvent.LoadAdd)
+                viewModel.onEvent(TriggerEvent.LoadTrigger)
             }
         }
         is AddUiState.Success -> {

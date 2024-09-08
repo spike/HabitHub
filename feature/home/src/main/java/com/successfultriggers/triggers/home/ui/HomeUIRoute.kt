@@ -12,19 +12,19 @@ import com.successfultriggers.triggers.home.ui.components.LoadingScreen
 fun HomeUIRoute(
     modifier: Modifier = Modifier,
     navTo: (String) -> Unit,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: TriggerViewModel = hiltViewModel()
 ) {
    val uiState = viewModel.uiState.collectAsState().value
     when (uiState) {
-        is CamUIState.Loading -> {
+        is HomeUIState.Loading -> {
             LoadingScreen()
         }
-        is CamUIState.Error -> {
+        is HomeUIState.Error -> {
             ErrorScreen(errorMessage = uiState.message) {
-                viewModel.onEvent(HomeEvent.OnRetry)
+                viewModel.onEvent(TriggerEvent.OnRetry)
             }
         }
-        is CamUIState.Success -> {
+        is HomeUIState.Success -> {
             HomeCompose(
                 modifier = modifier,
                 data = uiState.data,
