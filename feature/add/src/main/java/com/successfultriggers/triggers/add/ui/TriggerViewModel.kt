@@ -3,6 +3,7 @@ package com.successfultriggers.triggers.add.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.successfultriggers.triggers.data.BaseProRepo  // Import your repository
+import com.successfultriggers.triggers.data.mapper.BasePro
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,12 +19,12 @@ class AddViewModel @Inject constructor(
     val uiState: StateFlow<AddUiState> = _uiState
 
     init {
-        onEvent(TriggerEvent.LoadTrigger)
+        onEvent(TriggerEvent.LoadData)
     }
 
     fun onEvent(event: TriggerEvent) {
         when (event) {
-            is TriggerEvent.LoadTrigger -> {
+            is TriggerEvent.LoadData -> {
                 loadSettings()
             }
             is TriggerEvent.UpdateSetting -> {
@@ -33,7 +34,9 @@ class AddViewModel @Inject constructor(
                 deleteAllEntries()
             }
 
-            is TriggerEvent.AddItem -> TODO()
+            is TriggerEvent.AddItem -> {
+                addItem(event.name)
+            }
             is TriggerEvent.DeleteItem -> TODO()
             is TriggerEvent.OnItemClicked -> TODO()
             TriggerEvent.OnRetry -> TODO()
@@ -65,6 +68,16 @@ class AddViewModel @Inject constructor(
             repository.deleteAll()  // Assuming this method exists in your repository
             // Optionally, update UI state or reload settings
             // loadSettings()  // Reload settings or update UI after deletion
+        }
+    }
+    private fun addItem(name: String) {
+        viewModelScope.launch {
+            try {
+                repository.insert(BasePro(title = name))
+                onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
+            } catch (e: Exception) {
+                _uiState.value = AddUiState.Error(message = e.localizedMessage ?: "Unknown error")
+            }
         }
     }
 }

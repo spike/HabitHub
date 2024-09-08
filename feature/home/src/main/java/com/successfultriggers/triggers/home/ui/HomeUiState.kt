@@ -2,11 +2,11 @@ package com.successfultriggers.triggers.home.ui
 
 import com.successfultriggers.triggers.data.mapper.BasePro
 
-sealed interface HomeUIState {
-    object Loading : HomeUIState
-    data class Error(val message: String) : HomeUIState
+sealed interface HomeUiState {
+    object Loading : HomeUiState
+    data class Error(val message: String) : HomeUiState
     data class Success(
         val data: List<BasePro> = emptyList(),
-    ) : HomeUIState
+    ) : HomeUiState
 }
 

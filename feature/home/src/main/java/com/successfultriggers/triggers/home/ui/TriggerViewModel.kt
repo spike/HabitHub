@@ -15,8 +15,8 @@ class TriggerViewModel @Inject constructor(
     private val repository: BaseProRepo
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<HomeUIState>(HomeUIState.Loading)
-    val uiState: StateFlow<HomeUIState> = _uiState
+    private val _uiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
+    val uiState: StateFlow<HomeUiState> = _uiState
 
     init {
         onEvent(TriggerEvent.LoadData)
@@ -51,7 +51,7 @@ class TriggerViewModel @Inject constructor(
                 repository.deleteAll()
                 //onEvent(CamEvent.LoadData)  // Refresh the data after deleting
             } catch (e: Exception) {
-                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }
@@ -59,12 +59,12 @@ class TriggerViewModel @Inject constructor(
     private fun loadData() {
         viewModelScope.launch {
             try {
-                _uiState.value = HomeUIState.Loading
+                _uiState.value = HomeUiState.Loading
                 repository.allGetBasePros().collect { data ->
-                    _uiState.value = HomeUIState.Success(data = data)
+                    _uiState.value = HomeUiState.Success(data = data)
                 }
             } catch (e: Exception) {
-                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }
@@ -75,7 +75,7 @@ class TriggerViewModel @Inject constructor(
                 repository.insert(BasePro(title = name))
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
-                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }
@@ -86,7 +86,7 @@ class TriggerViewModel @Inject constructor(
                 repository.getBaseProById(itemId)
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after deleting
             } catch (e: Exception) {
-                _uiState.value = HomeUIState.Error(message = e.localizedMessage ?: "Unknown error")
+                _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")
             }
         }
     }

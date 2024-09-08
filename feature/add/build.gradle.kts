@@ -53,6 +53,7 @@ dependencies {
     // Hilt Dependency Injection
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
+    implementation(project(":core:ui"))
     ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)

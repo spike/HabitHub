@@ -62,7 +62,8 @@ fun MainNavGraph(
         ) {
             HomeUIRoute(
                 modifier = Modifier.padding(padding),
-                navTo = {path -> navController.navigate(path)}
+                navTo = {path -> navController.navigate(path)},
+                navController = navController
             )
         }
         composable(
@@ -70,7 +71,8 @@ fun MainNavGraph(
         ) {
             AddUiRoute(
                 modifier = Modifier.padding(padding),
-                navTo = {path -> navController.navigate(path)}
+                navTo = {path -> navController.navigate(path)},
+                navController = navController
             )
             /*SettingsScreen(
                 paddingValues = padding,

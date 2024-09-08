@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.home.ui.TriggerEvent
 import com.successfultriggers.triggers.data.BaseProEntity
 
@@ -26,17 +27,15 @@ import com.successfultriggers.triggers.data.BaseProEntity
 fun HomeCompose(
     modifier: Modifier = Modifier,
     data: List<BaseProEntity>,
-    onEvent: (TriggerEvent) -> Unit
+    onEvent: (TriggerEvent) -> Unit,
+    navController: NavHostController
 ) {
     var newItemName by remember { mutableStateOf("") }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         Row {
-            Text("List of Items")
+            Text("List of Triggers")
             Spacer(modifier = Modifier.weight(1f))
-            Button(onClick = { onEvent( TriggerEvent.DeleteAll) }) {
-                Text("Delete All")
-            }
         }
         data.forEach { item ->
             Row(
@@ -53,28 +52,6 @@ fun HomeCompose(
                 Button(onClick = {  onEvent( TriggerEvent.DeleteItem(item.todoId)) }) {
                     Text("Delete")
                 }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row {
-            TextField(
-                value = newItemName,
-                onValueChange = { newItemName = it },
-                label = { Text("New Item") },
-                modifier = Modifier.weight(1f)
-            )
-            Button(
-                onClick = {
-                    if (newItemName.isNotBlank()) {
-                        onEvent( TriggerEvent.AddItem(newItemName))
-                        newItemName = ""
-                    }
-                },
-                modifier = Modifier.padding(start = 8.dp)
-            ) {
-                Text("Add")
             }
         }
     }

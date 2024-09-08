@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.add.ui.components.ErrorScreen
 import com.successfultriggers.triggers.add.ui.components.LoadingScreen
 import com.successfultriggers.triggers.add.ui.components.AddCompose
@@ -12,7 +13,8 @@ import com.successfultriggers.triggers.add.ui.components.AddCompose
 fun AddUiRoute(
     modifier: Modifier = Modifier,
     navTo: (String) -> Unit,
-    viewModel: AddViewModel = hiltViewModel()
+    viewModel: AddViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
     val uiState = viewModel.uiState.collectAsState().value
 
@@ -22,14 +24,15 @@ fun AddUiRoute(
         }
         is AddUiState.Error -> {
             ErrorScreen(errorMessage = uiState.message) {
-                viewModel.onEvent(TriggerEvent.LoadTrigger)
+                viewModel.onEvent(TriggerEvent.LoadData)
             }
         }
         is AddUiState.Success -> {
             AddCompose(
                 modifier = modifier,
                 settings = uiState.settings,
-                onEvent = { event -> viewModel.onEvent(event) }
+                onEvent = { event -> viewModel.onEvent(event) },
+                navController = navController
             )
         }
     }
