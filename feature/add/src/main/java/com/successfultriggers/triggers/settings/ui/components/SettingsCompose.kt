@@ -24,19 +24,7 @@ fun SettingsCompose(
     Column(
         modifier = modifier.fillMaxSize().padding(16.dp)
     ) {
-        settings.forEach { (key, value) ->
-            val newValue = remember { mutableStateOf(value) }
-            Text(text = "$key: ")
-            BasicTextField(
-                value = newValue.value,
-                onValueChange = { newValue.value = it }
-            )
-            Button(onClick = { onEvent(SettingsEvent.UpdateSetting(key, newValue.value)) }) {
-                Text("Save $key")
-            }
-        }
 
-        // Button to delete all entries
         Button(onClick = { onEvent(SettingsEvent.DeleteAllEntries) }) {
             Text("Delete All Entries")
         }
