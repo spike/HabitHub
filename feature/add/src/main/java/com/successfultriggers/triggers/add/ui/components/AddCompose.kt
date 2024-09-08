@@ -34,15 +34,11 @@ fun AddCompose(
         modifier = modifier.fillMaxSize().padding(16.dp)
     ) {
 
-//        Button(onClick = { onEvent(TriggerEvent.DeleteAllEntries) }) {
-//            Text("Delete All Entries")
-//        }
-        Row {
+        Column {
             TextField(
                 value = newItemName,
                 onValueChange = { newItemName = it },
-                label = { Text("New Item") },
-                modifier = Modifier.weight(1f)
+                label = { Text("Trigger Name") }
             )
             Button(
                 onClick = {
@@ -54,7 +50,7 @@ fun AddCompose(
                 },
                 modifier = Modifier.padding(start = 8.dp)
             ) {
-                Text("Add")
+                Text("Add Trigger")
             }
         }
     }
