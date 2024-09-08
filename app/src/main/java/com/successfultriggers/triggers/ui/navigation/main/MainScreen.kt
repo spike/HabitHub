@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.AddCircle
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.twotone.Add
+import androidx.compose.material.icons.twotone.AddCircle
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.List
 import androidx.compose.material.icons.twotone.Settings
@@ -69,12 +71,7 @@ import kotlin.math.roundToInt
 private fun navigateTo(tabTitle: String, navController: NavHostController) {
     when (tabTitle) {
         "Home"-> navController.navigate(Screen.HomeScreen.route)
-        "Settings" -> navController.navigate(Screen.SettingsScreen.route)
         "NEW TRIGGER" -> navController.navigate(Screen.SettingsScreen.route)
-        "New Trigger" -> navController.navigate(Screen.SettingsScreen.route)
-        "Add Trigger" -> navController.navigate(Screen.SettingsScreen.route)
-        "Add" -> navController.navigate(Screen.SettingsScreen.route)
-        "ADD" -> navController.navigate(Screen.SettingsScreen.route)
     }
 }
 
@@ -95,8 +92,8 @@ val items = listOf(
     ),
     BottomNavigationItem(
         title = "NEW TRIGGER", // Category -> Cat
-        selectedIcon = Icons.TwoTone.Add,
-        unselectedIcon = Icons.Outlined.Add,
+        selectedIcon = Icons.Outlined.AddCircle,
+        unselectedIcon = Icons.TwoTone.AddCircle,
         hasNews = false,
     ),
 )

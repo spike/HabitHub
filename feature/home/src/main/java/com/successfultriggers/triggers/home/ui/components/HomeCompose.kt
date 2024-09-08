@@ -1,6 +1,7 @@
 package com.successfultriggers.triggers.home.ui.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +19,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.home.ui.TriggerEvent
 import com.successfultriggers.triggers.data.BaseProEntity
@@ -33,10 +36,19 @@ fun HomeCompose(
     var newItemName by remember { mutableStateOf("") }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
-        Row {
-            Text("List of Triggers")
+        Row(
+            modifier = Modifier.fillMaxWidth(), // Make sure the row fills the width
+            horizontalArrangement = Arrangement.SpaceBetween // Space out the row items
+        ) {
+            Text(
+                text = "Triggers",
+                fontSize = 24.sp, // Increase font size for header effect
+                fontWeight = FontWeight.Bold, // Make the text bold
+                modifier = Modifier.weight(1f)
+            )
             Spacer(modifier = Modifier.weight(1f))
         }
+
         data.forEach { item ->
             Row(
                 modifier = Modifier
