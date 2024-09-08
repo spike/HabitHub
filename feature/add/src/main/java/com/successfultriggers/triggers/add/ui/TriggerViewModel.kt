@@ -32,6 +32,11 @@ class AddViewModel @Inject constructor(
             is TriggerEvent.DeleteAllEntries -> {
                 deleteAllEntries()
             }
+
+            is TriggerEvent.AddItem -> TODO()
+            is TriggerEvent.DeleteItem -> TODO()
+            is TriggerEvent.OnItemClicked -> TODO()
+            TriggerEvent.OnRetry -> TODO()
         }
     }
 

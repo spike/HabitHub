@@ -64,29 +64,7 @@ fun MainNavGraph(
                 modifier = Modifier.padding(padding),
                 navTo = {path -> navController.navigate(path)}
             )
-            /*SailorWindRoute(
-                paddingValues = padding,
-                navTo = {path -> navController.navigate(path)}
-            )*/
-            /*SwipeableViewsRoute(
-                paddingValues = padding,
-                navTo = {path -> navController.navigate(path)}
-            )*/
         }
-
-        composable(
-            Screen.HoldScreen.route
-        ) {
-            Column (
-                modifier = Modifier.padding(padding)
-            ) {
-                HoldCompose(
-                    modifier = Modifier.padding(padding),
-                    navTo = {path -> navController.navigate(path)}
-                )
-            }
-        }
-
         composable(
             Screen.SettingsScreen.route
         ) {

@@ -67,7 +67,6 @@ import kotlin.math.roundToInt
 private fun navigateTo(tabTitle: String, navController: NavHostController) {
     when (tabTitle) {
         "Home"-> navController.navigate(Screen.HomeScreen.route)
-        "Hold" -> navController.navigate(Screen.HoldScreen.route)
         "Settings" -> navController.navigate(Screen.SettingsScreen.route)
     }
 }
@@ -88,17 +87,10 @@ val items = listOf(
         hasNews = false,
     ),
     BottomNavigationItem(
-        title = "Hold",
-        selectedIcon = Icons.TwoTone.List,
-        unselectedIcon = Icons.Outlined.List,
-        hasNews = false,
-        badgeCount = 0
-    ),
-    BottomNavigationItem(
         title = "Settings", // Category -> Cat
         selectedIcon = Icons.TwoTone.Settings,
         unselectedIcon = Icons.Outlined.Settings,
-        hasNews = true,
+        hasNews = false,
     ),
 )
 
