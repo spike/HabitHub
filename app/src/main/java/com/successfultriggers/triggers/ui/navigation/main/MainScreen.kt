@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.List
 import androidx.compose.material.icons.twotone.Settings
@@ -68,6 +70,11 @@ private fun navigateTo(tabTitle: String, navController: NavHostController) {
     when (tabTitle) {
         "Home"-> navController.navigate(Screen.HomeScreen.route)
         "Settings" -> navController.navigate(Screen.SettingsScreen.route)
+        "NEW TRIGGER" -> navController.navigate(Screen.SettingsScreen.route)
+        "New Trigger" -> navController.navigate(Screen.SettingsScreen.route)
+        "Add Trigger" -> navController.navigate(Screen.SettingsScreen.route)
+        "Add" -> navController.navigate(Screen.SettingsScreen.route)
+        "ADD" -> navController.navigate(Screen.SettingsScreen.route)
     }
 }
 
@@ -87,9 +94,9 @@ val items = listOf(
         hasNews = false,
     ),
     BottomNavigationItem(
-        title = "Settings", // Category -> Cat
-        selectedIcon = Icons.TwoTone.Settings,
-        unselectedIcon = Icons.Outlined.Settings,
+        title = "NEW TRIGGER", // Category -> Cat
+        selectedIcon = Icons.TwoTone.Add,
+        unselectedIcon = Icons.Outlined.Add,
         hasNews = false,
     ),
 )
@@ -130,7 +137,7 @@ fun MainScreen(navController: NavHostController = rememberNavController()) { // 
 @Composable
 fun AppTopBar() {
     TopAppBar(
-        title = { Text("BasePro") },
+        title = { Text("Triggers") },
         /*navigationIcon = {
             IconButton(onClick = { /* Handle navigation icon press */ }) {
                 Icon(Icons.Filled.Menu, contentDescription = "Menu")
@@ -172,7 +179,7 @@ fun AppBottomBar(
                 label = {
                     Text(text = item.title)
                 },
-                alwaysShowLabel = false,
+                alwaysShowLabel = true,
                 icon = {
                     BadgedBox(
                         badge = {
