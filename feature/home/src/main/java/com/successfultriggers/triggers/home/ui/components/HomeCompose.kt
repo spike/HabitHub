@@ -1,4 +1,4 @@
-package com.successfultriggers.triggers.cam.ui.components
+package com.successfultriggers.triggers.home.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,14 +19,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.successfultriggers.triggers.cam.ui.CamEvent
+import com.successfultriggers.triggers.home.ui.HomeEvent
 import com.successfultriggers.triggers.data.BaseProEntity
 
 @Composable
-fun CamCompose(
+fun HomeCompose(
     modifier: Modifier = Modifier,
     data: List<BaseProEntity>,
-    onEvent: (CamEvent) -> Unit
+    onEvent: (HomeEvent) -> Unit
 ) {
     var newItemName by remember { mutableStateOf("") }
 
@@ -34,7 +34,7 @@ fun CamCompose(
         Row {
             Text("List of Items")
             Spacer(modifier = Modifier.weight(1f))
-            Button(onClick = { onEvent( CamEvent.DeleteAll) }) {
+            Button(onClick = { onEvent( HomeEvent.DeleteAll) }) {
                 Text("Delete All")
             }
         }
@@ -43,14 +43,14 @@ fun CamCompose(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
-                    .clickable {  onEvent( CamEvent.OnItemClicked(item.todoId)) }
+                    .clickable {  onEvent( HomeEvent.OnItemClicked(item.todoId)) }
             ) {
                 Text(
                     text = item.title,
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.weight(1f)
                 )
-                Button(onClick = {  onEvent( CamEvent.DeleteItem(item.todoId)) }) {
+                Button(onClick = {  onEvent( HomeEvent.DeleteItem(item.todoId)) }) {
                     Text("Delete")
                 }
             }
@@ -68,7 +68,7 @@ fun CamCompose(
             Button(
                 onClick = {
                     if (newItemName.isNotBlank()) {
-                        onEvent( CamEvent.AddItem(newItemName))
+                        onEvent( HomeEvent.AddItem(newItemName))
                         newItemName = ""
                     }
                 },

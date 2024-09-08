@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.successfultriggers.triggers.cam.ui.CamUIRoute
+import com.successfultriggers.triggers.home.ui.HomeUIRoute
 import com.successfultriggers.triggers.core.ui.MAIN
 import com.successfultriggers.triggers.core.ui.Screen
-import com.successfultriggers.triggers.settings.ui.SettingsUiRoute
+import com.successfultriggers.triggers.add.ui.AddUiRoute
 
 
 /**
@@ -60,7 +60,7 @@ fun MainNavGraph(
         composable(
             Screen.HomeScreen.route,
         ) {
-            CamUIRoute(
+            HomeUIRoute(
                 modifier = Modifier.padding(padding),
                 navTo = {path -> navController.navigate(path)}
             )
@@ -90,7 +90,7 @@ fun MainNavGraph(
         composable(
             Screen.SettingsScreen.route
         ) {
-            SettingsUiRoute(
+            AddUiRoute(
                 modifier = Modifier.padding(padding),
                 navTo = {path -> navController.navigate(path)}
             )

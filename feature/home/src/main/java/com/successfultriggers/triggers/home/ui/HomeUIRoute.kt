@@ -1,18 +1,18 @@
-package com.successfultriggers.triggers.cam.ui
+package com.successfultriggers.triggers.home.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.successfultriggers.triggers.cam.ui.components.CamCompose
-import com.successfultriggers.triggers.cam.ui.components.ErrorScreen
-import com.successfultriggers.triggers.cam.ui.components.LoadingScreen
+import com.successfultriggers.triggers.home.ui.components.HomeCompose
+import com.successfultriggers.triggers.home.ui.components.ErrorScreen
+import com.successfultriggers.triggers.home.ui.components.LoadingScreen
 
 @Composable
-fun CamUIRoute(
+fun HomeUIRoute(
     modifier: Modifier = Modifier,
     navTo: (String) -> Unit,
-    viewModel: CamViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
    val uiState = viewModel.uiState.collectAsState().value
     when (uiState) {
@@ -21,11 +21,11 @@ fun CamUIRoute(
         }
         is CamUIState.Error -> {
             ErrorScreen(errorMessage = uiState.message) {
-                viewModel.onEvent(CamEvent.OnRetry)
+                viewModel.onEvent(HomeEvent.OnRetry)
             }
         }
         is CamUIState.Success -> {
-            CamCompose(
+            HomeCompose(
                 modifier = modifier,
                 data = uiState.data,
                 onEvent = { event -> viewModel.onEvent(event) }

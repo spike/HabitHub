@@ -1,4 +1,4 @@
-package com.successfultriggers.triggers.settings
+package com.successfultriggers.triggers.add
 
 import org.junit.Test
 

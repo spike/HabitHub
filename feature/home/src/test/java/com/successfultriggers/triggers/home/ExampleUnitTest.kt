@@ -1,4 +1,4 @@
-package com.successfultriggers.triggers.cam
+package com.successfultriggers.triggers.home
 
 import org.junit.Test
 

@@ -1,32 +1,32 @@
-package com.successfultriggers.triggers.settings.ui
+package com.successfultriggers.triggers.add.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.successfultriggers.triggers.settings.ui.components.ErrorScreen
-import com.successfultriggers.triggers.settings.ui.components.LoadingScreen
-import com.successfultriggers.triggers.settings.ui.components.SettingsCompose
+import com.successfultriggers.triggers.add.ui.components.ErrorScreen
+import com.successfultriggers.triggers.add.ui.components.LoadingScreen
+import com.successfultriggers.triggers.add.ui.components.AddCompose
 
 @Composable
-fun SettingsUiRoute(
+fun AddUiRoute(
     modifier: Modifier = Modifier,
     navTo: (String) -> Unit,
-    viewModel: SettingsViewModel = hiltViewModel()
+    viewModel: AddViewModel = hiltViewModel()
 ) {
     val uiState = viewModel.uiState.collectAsState().value
 
     when (uiState) {
-        is SettingsUiState.Loading -> {
+        is AddUiState.Loading -> {
             LoadingScreen()
         }
-        is SettingsUiState.Error -> {
+        is AddUiState.Error -> {
             ErrorScreen(errorMessage = uiState.message) {
-                viewModel.onEvent(SettingsEvent.LoadSettings)
+                viewModel.onEvent(AddEvent.LoadAdd)
             }
         }
-        is SettingsUiState.Success -> {
-            SettingsCompose(
+        is AddUiState.Success -> {
+            AddCompose(
                 modifier = modifier,
                 settings = uiState.settings,
                 onEvent = { event -> viewModel.onEvent(event) }

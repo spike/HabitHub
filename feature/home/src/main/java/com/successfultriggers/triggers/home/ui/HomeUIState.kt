@@ -1,4 +1,4 @@
-package com.successfultriggers.triggers.cam.ui
+package com.successfultriggers.triggers.home.ui
 
 import com.successfultriggers.triggers.data.mapper.BasePro
 

@@ -1,4 +1,4 @@
-package com.successfultriggers.triggers.cam.ui
+package com.successfultriggers.triggers.home.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CamViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val repository: BaseProRepo
 ) : ViewModel() {
 
@@ -19,27 +19,27 @@ class CamViewModel @Inject constructor(
     val uiState: StateFlow<CamUIState> = _uiState
 
     init {
-        onEvent(CamEvent.LoadData)
+        onEvent(HomeEvent.LoadData)
     }
 
-    fun onEvent(event: CamEvent) {
+    fun onEvent(event: HomeEvent) {
         when (event) {
-            is CamEvent.LoadData -> {
+            is HomeEvent.LoadData -> {
                 loadData()
             }
-            is CamEvent.AddItem -> {
+            is HomeEvent.AddItem -> {
                 addItem(event.name)
             }
-            is CamEvent.DeleteItem -> {
+            is HomeEvent.DeleteItem -> {
                 deleteItem(event.itemId)
             }
-            is CamEvent.DeleteAll -> {
+            is HomeEvent.DeleteAll -> {
                 deleteAll()
             }
-            is CamEvent.OnRetry -> {
-                onEvent(CamEvent.LoadData)
+            is HomeEvent.OnRetry -> {
+                onEvent(HomeEvent.LoadData)
             }
-            is CamEvent.OnItemClicked -> {
+            is HomeEvent.OnItemClicked -> {
                 // Handle item click if needed
             }
         }
@@ -73,7 +73,7 @@ class CamViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 repository.insert(BasePro(title = name))
-                onEvent(CamEvent.LoadData)  // Refresh the data after adding
+                onEvent(HomeEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
                 _uiState.value = CamUIState.Error(message = e.localizedMessage ?: "Unknown error")
             }
@@ -84,7 +84,7 @@ class CamViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 repository.getBaseProById(itemId)
-                onEvent(CamEvent.LoadData)  // Refresh the data after deleting
+                onEvent(HomeEvent.LoadData)  // Refresh the data after deleting
             } catch (e: Exception) {
                 _uiState.value = CamUIState.Error(message = e.localizedMessage ?: "Unknown error")
             }

@@ -1,31 +1,28 @@
-package com.successfultriggers.triggers.settings.ui.components
+package com.successfultriggers.triggers.add.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.successfultriggers.triggers.settings.ui.SettingsEvent
+import com.successfultriggers.triggers.add.ui.AddEvent
 
 @Composable
-fun SettingsCompose(
+fun AddCompose(
     modifier: Modifier = Modifier,
     settings: Map<String, String>,
-    onEvent: (SettingsEvent) -> Unit
+    onEvent: (AddEvent) -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize().padding(16.dp)
     ) {
 
-        Button(onClick = { onEvent(SettingsEvent.DeleteAllEntries) }) {
+        Button(onClick = { onEvent(AddEvent.DeleteAllEntries) }) {
             Text("Delete All Entries")
         }
     }
