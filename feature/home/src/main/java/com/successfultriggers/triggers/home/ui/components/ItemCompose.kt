@@ -31,7 +31,7 @@ fun CompoundButton(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = Color(0xFFD1E3FF)) // Pastel color background
+            .background(color = Color(0xFF00BCD4)) // Pastel color background
             .clickable {
                 isChecked = !isChecked
                 onClick()
