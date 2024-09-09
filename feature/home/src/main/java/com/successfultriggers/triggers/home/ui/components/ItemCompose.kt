@@ -11,12 +11,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
-import androidx.navigation.NavHostController
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.navigation.NavHostController
 
 @Composable
 fun CompoundButton(
@@ -24,14 +27,18 @@ fun CompoundButton(
     navController: NavHostController? = null, // For preview, set as nullable
     primaryText: String,      // First text parameter (big and bold)
     secondaryText: String,    // Second text parameter (smaller and in caps)
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    cornerRadius: Dp = 12.dp // Add a parameter for corner radius
 ) {
     var isChecked by remember { mutableStateOf(false) }
 
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = Color(0xFF00BCD4)) // Pastel color background
+            .background(
+                color = Color(0xFF00BCD4), // Pastel color background
+                shape = RoundedCornerShape(cornerRadius) // Rounded corners
+            )
             .clickable {
                 isChecked = !isChecked
                 onClick()
