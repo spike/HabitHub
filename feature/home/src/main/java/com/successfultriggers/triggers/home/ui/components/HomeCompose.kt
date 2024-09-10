@@ -1,5 +1,7 @@
 package com.successfultriggers.triggers.home.ui.components
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -62,7 +64,9 @@ fun HomeCompose(
                     CompoundButton(
                         primaryText = item.title,
                         secondaryText = "1 DAY AGO",
-                        onClick = { /* Handle preview click */ }
+                        onClick = {
+                            Log.d("HomeCompose", "Item clicked: ${index}")
+                        }
                     )
 //                    Text(
 //                        text = item.title,
