@@ -7,8 +7,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.add.ui.TriggerEvent
 import com.successfultriggers.triggers.core.ui.Screen
@@ -34,7 +36,11 @@ fun AddCompose(
             onValueChange = { newItemName = it },
             label = { Text("Trigger Name") },
             singleLine = true, // Restrict to one line
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Text,
+                capitalization = KeyboardCapitalization.Sentences // Capitalize the first letter
+            ),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp), // Set font size to 20.sp
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.surface,
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
