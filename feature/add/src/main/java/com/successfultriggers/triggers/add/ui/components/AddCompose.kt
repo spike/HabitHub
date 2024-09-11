@@ -12,7 +12,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 // import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.graphics.toArgb
 // import com.github.skydoves.colorpicker.compose.*
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.add.ui.TriggerEvent
@@ -28,7 +27,7 @@ fun AddCompose(
 ) {
     var newItemName by remember { mutableStateOf("") }
     var desiredHabit by remember { mutableStateOf("") }
-    var minimalHabit by remember { mutableStateOf("") }
+    var minimalAction by remember { mutableStateOf("") }
     var identity by remember { mutableStateOf("") }
     var selectedColor by remember { mutableStateOf(Color.Blue) } // default color
 
@@ -78,9 +77,9 @@ fun AddCompose(
 
         // Minimal Habit input field
         TextField(
-            value = minimalHabit,
-            onValueChange = { minimalHabit = it },
-            label = { Text("Minimal Habit") },
+            value = minimalAction,
+            onValueChange = { minimalAction = it },
+            label = { Text("Minimal Action") },
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Text,
