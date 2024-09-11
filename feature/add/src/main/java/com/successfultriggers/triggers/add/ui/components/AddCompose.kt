@@ -11,6 +11,9 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+// import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.toArgb
+// import com.github.skydoves.colorpicker.compose.*
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.add.ui.TriggerEvent
 import com.successfultriggers.triggers.core.ui.Screen
@@ -24,23 +27,28 @@ fun AddCompose(
     navController: NavHostController
 ) {
     var newItemName by remember { mutableStateOf("") }
+    var desiredHabit by remember { mutableStateOf("") }
+    var minimalHabit by remember { mutableStateOf("") }
+    var identity by remember { mutableStateOf("") }
+    var selectedColor by remember { mutableStateOf(Color.Blue) } // default color
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // Trigger name input field
         TextField(
             value = newItemName,
             onValueChange = { newItemName = it },
             label = { Text("Trigger Name") },
-            singleLine = true, // Restrict to one line
+            singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Sentences // Capitalize the first letter
+                capitalization = KeyboardCapitalization.Sentences
             ),
-            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp), // Set font size to 20.sp
+            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.surface,
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
@@ -49,7 +57,79 @@ fun AddCompose(
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp)) // Add spacing between input and button
+        // Desired Habit input field
+        TextField(
+            value = desiredHabit,
+            onValueChange = { desiredHabit = it },
+            label = { Text("Desired Habit") },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Text,
+                capitalization = KeyboardCapitalization.Sentences
+            ),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.primary
+            ),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        // Minimal Habit input field
+        TextField(
+            value = minimalHabit,
+            onValueChange = { minimalHabit = it },
+            label = { Text("Minimal Habit") },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Text,
+                capitalization = KeyboardCapitalization.Sentences
+            ),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.primary
+            ),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        // Identity input field
+        TextField(
+            value = identity,
+            onValueChange = { identity = it },
+            label = { Text("Identity") },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Text,
+                capitalization = KeyboardCapitalization.Sentences
+            ),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.primary
+            ),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        // Color picker button
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Pick Color", fontSize = 18.sp)
+            Button(
+                onClick = {
+                    // Add color picker functionality
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = selectedColor)
+            ) {
+                Text("Select", color = Color.White)
+            }
+        }
 
         // Add Trigger button
         Button(
