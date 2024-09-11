@@ -1,9 +1,9 @@
 package com.successfultriggers.triggers.add.ui.components
-
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,7 +32,8 @@ fun AddCompose(
     var desiredHabit by remember { mutableStateOf("") }
     var minimalAction by remember { mutableStateOf("") }
     var identity by remember { mutableStateOf("") }
-    var selectedColor by remember { mutableStateOf(Color.Blue) } // default color
+    var selectedColor by remember { mutableStateOf(Color.Blue) } // Default color
+    var isDialogOpen by remember { mutableStateOf(false) } // Control the dialog visibility
 
     Column(
         modifier = modifier
@@ -40,45 +41,28 @@ fun AddCompose(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-
+        // Trigger name input field with square icon to open color picker dialog
         TextField(
             value = newItemName,
             onValueChange = { newItemName = it },
             label = { Text("Trigger Name") },
             singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Sentences
-            ),
-            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-                cursorColor = MaterialTheme.colorScheme.primary
-            ),
             trailingIcon = {
-                IconButton(onClick = {
-
-                }) {
+                IconButton(onClick = { isDialogOpen = true }) {
                     val icon: Painter = painterResource(id = R.drawable.baseline_square_24)
                     Icon(
                         painter = icon,
                         contentDescription = "Square Icon",
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = selectedColor // Use the selected color as tint
                     )
                 }
             },
-//            trailingIcon = {
-//                IconButton(onClick = { /* Handle microphone button click */ }) {
-//                    Icon(
-//                      //  imageVector = Icons.Filled.AccountBox,
-//                        imageVector = Icons.Filled.AccountBox,
-//                        contentDescription = "Microphone Icon",
-//                        tint = MaterialTheme.colorScheme.primary
-//                    )
-//                }
-//            },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.primary
+            )
         )
 
         // Desired Habit input field
@@ -100,7 +84,7 @@ fun AddCompose(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // Minimal Habit input field
+        // Minimal Action input field
         TextField(
             value = minimalAction,
             onValueChange = { minimalAction = it },
@@ -153,4 +137,57 @@ fun AddCompose(
             Text("Add", color = Color.White, fontSize = 20.sp)
         }
     }
+
+    // Display color picker dialog when the icon is clicked
+    if (isDialogOpen) {
+        ColorPickerDialog(
+            onDismiss = { isDialogOpen = false },
+            onColorSelected = { color ->
+                selectedColor = color
+                isDialogOpen = false
+            }
+        )
+    }
+}
+
+@Composable
+fun ColorPickerDialog(onDismiss: () -> Unit, onColorSelected: (Color) -> Unit) {
+    val colors = listOf(
+        Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Magenta, Color.Cyan,
+        Color.Gray, Color.Black, Color.White, Color(0xFFFFA500), Color(0xFF800080), Color(0xFF00FF00)
+    )
+
+    AlertDialog(
+        onDismissRequest = { onDismiss() },
+        title = { Text(text = "Pick a Color") },
+        text = {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Display colors in a grid layout (3 columns)
+                for (row in colors.chunked(4)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround
+                    ) {
+                        row.forEach { color ->
+                            Box(
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .background(color, shape = CircleShape)
+                                    .clickable { onColorSelected(color) }
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onDismiss() }) {
+                Text("Cancel")
+            }
+        }
+    )
 }
