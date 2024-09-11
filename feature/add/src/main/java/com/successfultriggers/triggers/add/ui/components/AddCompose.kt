@@ -1,27 +1,16 @@
 package com.successfultriggers.triggers.add.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -29,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.add.ui.TriggerEvent
 import com.successfultriggers.triggers.core.ui.Screen
+import com.successfultriggers.triggers.settings.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,7 +40,7 @@ fun AddCompose(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Trigger name input field
+
         TextField(
             value = newItemName,
             onValueChange = { newItemName = it },
@@ -66,6 +56,28 @@ fun AddCompose(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 cursorColor = MaterialTheme.colorScheme.primary
             ),
+            trailingIcon = {
+                IconButton(onClick = {
+
+                }) {
+                    val icon: Painter = painterResource(id = R.drawable.baseline_square_24)
+                    Icon(
+                        painter = icon,
+                        contentDescription = "Square Icon",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
+            },
+//            trailingIcon = {
+//                IconButton(onClick = { /* Handle microphone button click */ }) {
+//                    Icon(
+//                      //  imageVector = Icons.Filled.AccountBox,
+//                        imageVector = Icons.Filled.AccountBox,
+//                        contentDescription = "Microphone Icon",
+//                        tint = MaterialTheme.colorScheme.primary
+//                    )
+//                }
+//            },
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -125,24 +137,6 @@ fun AddCompose(
             ),
             modifier = Modifier.fillMaxWidth()
         )
-
-        // Color picker button
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Button(
-                onClick = {
-                    // Add color picker functionality
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-                // colors = ButtonDefaults.buttonColors(containerColor = selectedColor)
-            ) {
-                Text("Color", color = Color.White, fontSize = 20.sp)
-            }
-        }
 
         // Add Trigger button
         Button(
