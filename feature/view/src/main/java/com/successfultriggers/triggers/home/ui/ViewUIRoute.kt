@@ -10,7 +10,7 @@ import com.successfultriggers.triggers.home.ui.components.ErrorScreen
 import com.successfultriggers.triggers.home.ui.components.LoadingScreen
 
 @Composable
-fun HomeUIRoute(
+fun ViewUIRoute(
     modifier: Modifier = Modifier,
     navTo: (String) -> Unit,
     viewModel: TriggerViewModel = hiltViewModel(),

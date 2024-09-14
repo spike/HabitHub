@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.navigation.NavHostController
 
 @Composable
@@ -51,6 +52,7 @@ fun CompoundButton(
                 .weight(1f)
                 .clickable {
                     Log.d("CompoundButton", "Colum clicked: $primaryText")
+
                 }
         ) {
             Text(

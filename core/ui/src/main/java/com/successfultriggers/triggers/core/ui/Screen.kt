@@ -37,6 +37,8 @@ sealed class Screen(val route: String) {
    // data object HoldScreen: Screen(route = "hold_screen") // is a key that is not used anywhere
     data object SettingsScreen : Screen(route = "settings_screen")
 
+    data object ViewScreen : Screen(route = "view_screen")
+
     // data object CameraPhoto: Screen(route = "camera_photo_screen")
 
 }

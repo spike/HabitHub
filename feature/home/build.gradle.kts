@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
     implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(project(":core:ui"))
     ksp(libs.hilt.android.compiler)
     // kapt(libs.hilt.compiler)
 
