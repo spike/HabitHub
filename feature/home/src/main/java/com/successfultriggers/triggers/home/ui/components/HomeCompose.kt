@@ -65,7 +65,7 @@ fun HomeCompose(
                         primaryText = item.title,
                         secondaryText = "1 DAY AGO",
                         onClick = {
-                            Log.d("HomeCompose", "Item clicked: ${index}")
+                           // Log.d("HomeCompose", "Item clicked: ${index}")
                         }
                     )
 //                    Text(

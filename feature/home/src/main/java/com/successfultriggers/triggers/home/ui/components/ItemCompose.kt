@@ -1,5 +1,6 @@
 package com.successfultriggers.triggers.home.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -39,17 +40,18 @@ fun CompoundButton(
                 color = Color(0xFF00BCD4), // Pastel color background
                 shape = RoundedCornerShape(cornerRadius) // Rounded corners
             )
-            .clickable {
-                isChecked = !isChecked
-                onClick()
-            }
+
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         // Text section with two text parameters
         Column(
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
+                .clickable {
+                    Log.d("CompoundButton", "Colum clicked: $primaryText")
+                }
         ) {
             Text(
                 text = primaryText,
@@ -66,7 +68,10 @@ fun CompoundButton(
 
         // Icon button that toggles between rotate and checkmark
         IconButton(
-            onClick = { isChecked = !isChecked },
+            onClick = {
+                isChecked = !isChecked
+                Log.d("CompoundButton", "Icon clicked: $primaryText")
+                      },
             modifier = Modifier.size(36.dp)
         ) {
             Icon(
