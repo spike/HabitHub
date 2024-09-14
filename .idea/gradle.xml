@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/add" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/view" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
