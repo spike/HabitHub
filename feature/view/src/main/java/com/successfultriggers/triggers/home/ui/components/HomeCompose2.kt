@@ -1,30 +1,23 @@
 package com.successfultriggers.triggers.home.ui.components
 
-import android.util.Log
-import android.widget.Toast
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.successfultriggers.triggers.home.ui.TriggerEvent
+import com.successfultriggers.triggers.home.ui.TriggerEvent2
 import com.successfultriggers.triggers.data.BaseProEntity
 
 @Composable
-fun HomeCompose(
+fun HomeCompose2(
     modifier: Modifier = Modifier,
     data: List<BaseProEntity>,
-    onEvent: (TriggerEvent) -> Unit,
+    onEvent: (TriggerEvent2) -> Unit,
     navController: NavHostController
 ) {
+    /*
     var newItemName by remember { mutableStateOf("") }
 
     Column(
@@ -83,6 +76,8 @@ fun HomeCompose(
             }
         }
     }
+
+     */
 }
 
 // These will be moved to a common directory.

@@ -16,7 +16,7 @@ import com.successfultriggers.triggers.home.ui.HomeUIRoute
 import com.successfultriggers.triggers.core.ui.MAIN
 import com.successfultriggers.triggers.core.ui.Screen
 import com.successfultriggers.triggers.add.ui.AddUiRoute
-import com.successfultriggers.triggers.home.ui.ViewUIRoute
+import com.successfultriggers.triggers.home.ui.ViewUIRoute2
 
 
 /**
@@ -70,7 +70,7 @@ fun MainNavGraph(
         composable(
             Screen.ViewScreen.route,
         ) {
-            ViewUIRoute(
+            ViewUIRoute2(
                 modifier = Modifier.padding(padding),
                 navTo = {path -> navController.navigate(path)},
                 navController = navController

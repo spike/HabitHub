@@ -11,8 +11,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
@@ -22,7 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.navigation.NavHostController
 
 @Composable
-fun CompoundButton(
+fun CompoundButton2(
     modifier: Modifier = Modifier,
     navController: NavHostController? = null, // For preview, set as nullable
     primaryText: String,      // First text parameter (big and bold)
@@ -82,7 +80,7 @@ fun CompoundButton(
 @Composable
 fun CompoundButtonPreview() {
     // Preview composable without NavController
-    CompoundButton(
+    CompoundButton2(
         primaryText = "Shoes in front of door",
         secondaryText = "1 DAY AGO",
         onClick = { /* Handle preview click */ }
