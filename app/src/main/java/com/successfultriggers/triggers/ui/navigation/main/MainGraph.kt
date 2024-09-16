@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.successfultriggers.triggers.home.ui.HomeUIRoute
 import com.successfultriggers.triggers.core.ui.MAIN
 import com.successfultriggers.triggers.core.ui.Screen
@@ -68,12 +70,15 @@ fun MainNavGraph(
             )
         }
         composable(
-            Screen.ViewScreen.route,
+            Screen.ViewScreen.route.plus("/{triggerId}"),
+            arguments = listOf(navArgument("triggerId") { type = NavType.StringType })
         ) {
+            val triggerId = it.arguments?.getString("triggerId")
             ViewUIRoute2(
                 modifier = Modifier.padding(padding),
                 navTo = {path -> navController.navigate(path)},
-                navController = navController
+                navController = navController,
+                triggerId = triggerId!!.toInt()
             )
         }
         composable(

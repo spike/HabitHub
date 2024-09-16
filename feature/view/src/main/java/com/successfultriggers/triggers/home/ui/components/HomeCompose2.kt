@@ -20,7 +20,8 @@ fun HomeCompose2(
     modifier: Modifier = Modifier,
     data: List<BaseProEntity>,
     onEvent: (TriggerEvent2) -> Unit,
-    navController: NavHostController
+    navController: NavHostController,
+    triggerId : Int
 ) {
 
     var newItemName by remember { mutableStateOf("") }
@@ -36,7 +37,7 @@ fun HomeCompose2(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Triggers View",
+                text = "Triggers View $triggerId",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,

@@ -14,7 +14,8 @@ fun ViewUIRoute2(
     modifier: Modifier = Modifier,
     navTo: (String) -> Unit,
     viewModel: TriggerViewModel2 = hiltViewModel(),
-    navController: NavHostController
+    navController: NavHostController,
+    triggerId: Int
 ) {
    val uiState = viewModel.uiState.collectAsState().value
     when (uiState) {
@@ -31,7 +32,8 @@ fun ViewUIRoute2(
                 modifier = modifier,
                 data = uiState.data,
                 onEvent = { event -> viewModel.onEvent(event) },
-                navController = navController
+                navController = navController,
+                triggerId = triggerId
             )
         }
     }

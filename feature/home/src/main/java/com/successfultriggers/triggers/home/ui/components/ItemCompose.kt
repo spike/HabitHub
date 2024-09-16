@@ -29,6 +29,7 @@ fun CompoundButton(
     navController: NavHostController? = null, // For preview, set as nullable
     primaryText: String,      // First text parameter (big and bold)
     secondaryText: String,    // Second text parameter (smaller and in caps)
+    triggerId: Int,
     onClick: () -> Unit,
     cornerRadius: Dp = 12.dp // Add a parameter for corner radius
 ) {
@@ -51,8 +52,8 @@ fun CompoundButton(
             modifier = Modifier
                 .weight(1f)
                 .clickable {
-                    Log.d("CompoundButton", "Colum clicked: $primaryText")
-                    navController?.navigate(com.successfultriggers.triggers.core.ui.Screen.ViewScreen.route)
+                    Log.d("CompoundButton", "Colum clicked: $triggerId")
+                    navController?.navigate(com.successfultriggers.triggers.core.ui.Screen.ViewScreen.route.plus("/$triggerId"))
                 }
         ) {
             Text(
@@ -92,6 +93,7 @@ fun CompoundButtonPreview() {
     CompoundButton(
         primaryText = "Shoes in front of door",
         secondaryText = "1 DAY AGO",
-        onClick = { /* Handle preview click */ }
+        onClick = { /* Handle preview click */ },
+        triggerId = 1
     )
 }

@@ -67,7 +67,8 @@ fun HomeCompose(
                         onClick = {
                            // Log.d("HomeCompose", "Item clicked: ${index}")
                         },
-                        navController = navController
+                        navController = navController,
+                        triggerId = item.todoId
                     )
 //                    Text(
 //                        text = item.title,
