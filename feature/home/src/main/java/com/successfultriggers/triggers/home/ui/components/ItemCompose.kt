@@ -52,7 +52,7 @@ fun CompoundButton(
                 .weight(1f)
                 .clickable {
                     Log.d("CompoundButton", "Colum clicked: $primaryText")
-
+                    navController?.navigate(com.successfultriggers.triggers.core.ui.Screen.ViewScreen.route)
                 }
         ) {
             Text(

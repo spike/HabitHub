@@ -1,11 +1,16 @@
 package com.successfultriggers.triggers.home.ui.components
 
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.home.ui.TriggerEvent2
 import com.successfultriggers.triggers.data.BaseProEntity
@@ -17,7 +22,7 @@ fun HomeCompose2(
     onEvent: (TriggerEvent2) -> Unit,
     navController: NavHostController
 ) {
-    /*
+
     var newItemName by remember { mutableStateOf("") }
 
     Column(
@@ -50,11 +55,11 @@ fun HomeCompose2(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
-                        .clickable { onEvent(TriggerEvent.OnItemClicked(item.todoId)) },
+                        .clickable { onEvent(TriggerEvent2.OnItemClicked(item.todoId)) },
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
 
-                    CompoundButton(
+                    CompoundButton2(
                         primaryText = item.title,
                         secondaryText = "1 DAY AGO",
                         onClick = {
@@ -77,7 +82,7 @@ fun HomeCompose2(
         }
     }
 
-     */
+
 }
 
 // These will be moved to a common directory.

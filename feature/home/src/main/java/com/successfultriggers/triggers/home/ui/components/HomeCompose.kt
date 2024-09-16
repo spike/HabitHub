@@ -66,7 +66,8 @@ fun HomeCompose(
                         secondaryText = "1 DAY AGO",
                         onClick = {
                            // Log.d("HomeCompose", "Item clicked: ${index}")
-                        }
+                        },
+                        navController = navController
                     )
 //                    Text(
 //                        text = item.title,
