@@ -45,13 +45,12 @@ class BaseProRepoImpl @Inject constructor (  // NOTE: constructor injection is n
     @WorkerThread
     override suspend fun insert(basepro: BasePro) {
         val baseproEnt = basepro.toBaseProEntity()
-        // Log.d(, "This is in todoDao --  ${photoEnt}")
         BaseProDao.insert(baseproEnt)
     }
 
     @WorkerThread
     override suspend fun delete(basepro: Int) {
-        // BaseProDao.delete(basepro.toBaseProEntity())
+        BaseProDao.deleteById(basepro)
     }
 
     @WorkerThread
