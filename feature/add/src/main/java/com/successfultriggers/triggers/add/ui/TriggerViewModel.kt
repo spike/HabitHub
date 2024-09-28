@@ -65,9 +65,7 @@ class AddViewModel @Inject constructor(
 
     private fun deleteAllEntries() {
         viewModelScope.launch {
-            repository.deleteAll()  // Assuming this method exists in your repository
-            // Optionally, update UI state or reload settings
-            // loadSettings()  // Reload settings or update UI after deletion
+            repository.deleteAll()
         }
     }
     private fun addItem(name: String) {

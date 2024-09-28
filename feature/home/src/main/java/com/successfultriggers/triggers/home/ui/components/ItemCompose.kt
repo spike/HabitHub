@@ -94,6 +94,6 @@ fun CompoundButtonPreview() {
         primaryText = "Shoes in front of door",
         secondaryText = "1 DAY AGO",
         onClick = { /* Handle preview click */ },
-        triggerId = 1
+        triggerId = 0
     )
 }

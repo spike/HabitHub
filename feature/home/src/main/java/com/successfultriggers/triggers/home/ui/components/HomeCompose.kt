@@ -46,7 +46,6 @@ fun HomeCompose(
             )
         }
 
-        // Scrollable list of items
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp) // Add space between items
@@ -68,19 +67,9 @@ fun HomeCompose(
                            // Log.d("HomeCompose", "Item clicked: ${index}")
                         },
                         navController = navController,
-                        triggerId = item.todoId
+                       // triggerId = item.todoId
+                        triggerId = index
                     )
-//                    Text(
-//                        text = item.title,
-//                        style = MaterialTheme.typography.bodyLarge,
-//                        modifier = Modifier.weight(1f)
-//                    )
-//                    Button(
-//                        onClick = { onEvent(TriggerEvent.DeleteItem(item.todoId)) },
-//                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-//                    ) {
-//                        Text("Delete", color = MaterialTheme.colorScheme.onError)
-//                    }
                 }
             }
         }
