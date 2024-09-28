@@ -50,8 +50,8 @@ class BaseProRepoImpl @Inject constructor (  // NOTE: constructor injection is n
     }
 
     @WorkerThread
-    override suspend fun delete(basepro: BasePro) {
-        BaseProDao.delete(basepro.toBaseProEntity())
+    override suspend fun delete(basepro: Int) {
+        // BaseProDao.delete(basepro.toBaseProEntity())
     }
 
     @WorkerThread

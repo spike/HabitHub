@@ -83,7 +83,8 @@ class TriggerViewModel2 @Inject constructor(
     private fun deleteItem(itemId: Int) {
         viewModelScope.launch {
             try {
-                repository.getBaseProById(itemId)
+                repository.delete(itemId)
+               // repository.getBaseProById(itemId)
                 onEvent(TriggerEvent2.LoadData)  // Refresh the data after deleting
             } catch (e: Exception) {
                 _uiState.value = HomeUiState2.Error(message = e.localizedMessage ?: "Unknown error")

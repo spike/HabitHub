@@ -37,53 +37,27 @@ fun HomeCompose2(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Triggers View $triggerId",
+                text = "Triggers View ${triggerId + 1}",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
         }
-
-        // Scrollable list of items
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp) // Add space between items
+        Column (modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(data.size) { index ->
-                val item = data[index]
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                        .clickable { onEvent(TriggerEvent2.OnItemClicked(item.todoId)) },
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-
-                    CompoundButton2(
-                        primaryText = item.title,
-                        secondaryText = "1 DAY AGO",
-                        onClick = {
-                            Log.d("HomeCompose", "Item clicked: ${index}")
-                        }
-                    )
-//                    Text(
-//                        text = item.title,
-//                        style = MaterialTheme.typography.bodyLarge,
-//                        modifier = Modifier.weight(1f)
-//                    )
-//                    Button(
-//                        onClick = { onEvent(TriggerEvent.DeleteItem(item.todoId)) },
-//                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-//                    ) {
-//                        Text("Delete", color = MaterialTheme.colorScheme.onError)
-//                    }
-                }
+            Text(text = data[triggerId].todoId.toString())
+            Text(text = data[triggerId].title)
+            Text(text = data[triggerId].description)
+            Button(
+                onClick = {
+                    onEvent(TriggerEvent2.DeleteItem(data[triggerId].todoId)) }
+            ) {
+                Text("Delete", color = MaterialTheme.colorScheme.onError)
             }
         }
     }
-
-
 }
 
 // These will be moved to a common directory.
