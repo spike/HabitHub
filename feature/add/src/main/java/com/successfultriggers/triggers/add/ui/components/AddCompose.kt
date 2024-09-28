@@ -103,25 +103,6 @@ fun AddCompose(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // Identity input field
-        TextField(
-            value = identity,
-            onValueChange = { identity = it },
-            label = { Text("Identity") },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Sentences
-            ),
-            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-                cursorColor = MaterialTheme.colorScheme.primary
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
-
         // Add Trigger button
         Button(
             onClick = {
