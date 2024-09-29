@@ -42,6 +42,7 @@ class TriggerViewModel @Inject constructor(
             is TriggerEvent.OnItemClicked -> {
                 // Handle item click if needed
             }
+            else -> {}
         }
     }
 

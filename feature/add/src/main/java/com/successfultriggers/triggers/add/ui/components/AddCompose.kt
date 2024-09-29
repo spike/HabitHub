@@ -31,8 +31,7 @@ fun AddCompose(
     var newItemName by remember { mutableStateOf("") }
     var desiredHabit by remember { mutableStateOf("") }
     var minimalAction by remember { mutableStateOf("") }
-    var identity by remember { mutableStateOf("") }
-    var selectedColor by remember { mutableStateOf(Color.Blue) } // Default color
+    var selectedColor by remember { mutableStateOf(Color(0xFF00ACC1)) } // Default color
     var isDialogOpen by remember { mutableStateOf(false) } // Control the dialog visibility
 
     Column(
@@ -52,7 +51,7 @@ fun AddCompose(
                     val icon: Painter = painterResource(id = R.drawable.baseline_square_24)
                     Icon(
                         painter = icon,
-                        contentDescription = "Square Icon",
+                        contentDescription = "Color Picker",
                         tint = selectedColor // Use the selected color as tint
                     )
                 }
@@ -113,7 +112,8 @@ fun AddCompose(
                 }
             },
             modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+           // colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+            colors = ButtonDefaults.buttonColors(containerColor = selectedColor)
         ) {
             Text("Add", color = Color.White, fontSize = 20.sp)
         }
@@ -134,8 +134,18 @@ fun AddCompose(
 @Composable
 fun ColorPickerDialog(onDismiss: () -> Unit, onColorSelected: (Color) -> Unit) {
     val colors = listOf(
-        Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Magenta, Color.Cyan,
-        Color.Gray, Color.Black, Color.White, Color(0xFFFFA500), Color(0xFF800080), Color(0xFF00FF00)
+        Color(0xFFE91E63),
+        Color(0xFFF44336),
+        Color(0xFFEF6C00),
+        Color(0xFFF9A825),
+        Color(0xFF43A047),
+        Color(0xFF009688),
+        Color(0xFF00ACC1),
+        Color(0xFF3F51B5),
+        Color(0xFF673AB7),
+        Color(0xFF9C27B0),
+        Color(0xFF795548),
+        Color(0xFF607D8B),
     )
 
     AlertDialog(
