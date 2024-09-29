@@ -71,7 +71,7 @@ class AddViewModel @Inject constructor(
     private fun addItem(name: String) {
         viewModelScope.launch {
             try {
-                repository.insert(BasePro(title = name))
+                repository.insert(BasePro(name = name))
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
                 _uiState.value = AddUiState.Error(message = e.localizedMessage ?: "Unknown error")

@@ -59,8 +59,8 @@ fun HomeCompose2(
         ) {
            // Text(text = data[triggerId].todoId.toString())
            // Text(text = (triggerId+1).toString())
-            Text(text = data[triggerId].title)
-            Text(text = data[triggerId].description)
+            Text(text = data[triggerId].name)
+            Text(text = data[triggerId].habit)
             Button(
                 onClick = {
                     // onEvent(TriggerEvent2.DeleteItem(data[triggerId].todoId))

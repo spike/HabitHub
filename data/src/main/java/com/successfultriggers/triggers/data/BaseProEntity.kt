@@ -5,19 +5,18 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.successfultriggers.triggers.data.converter.Converters
-import java.time.ZonedDateTime
 
 @Entity(tableName = "basepro_table")
 @TypeConverters(Converters::class)
 data class BaseProEntity(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val todoId: Int = 0,
-    @ColumnInfo(name = "title") val title: String = "",
-    @ColumnInfo(name = "description") val description: String = "",
+    @ColumnInfo(name = "title") val name: String = "",
+    @ColumnInfo(name = "description") val habit: String = "",
 
 //    @ColumnInfo(name = "trigger_name") val triggerName: String = "",
 //    @ColumnInfo(name = "desired_habit") val desiredHabit: String = "",
     @ColumnInfo(name = "minimal_action") val minimalAction: String = "",
-    @ColumnInfo(name = "color") val color: Long = 0xFF000000,
+    @ColumnInfo(name = "selected_color") val selectedColor: Long = 0xFF000000,
 
 
     //@ColumnInfo(name = "timestamp") val timestamp : ZonedDateTime = ZonedDateTime.now(),
