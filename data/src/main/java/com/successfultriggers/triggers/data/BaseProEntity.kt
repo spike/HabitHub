@@ -11,7 +11,7 @@ import com.successfultriggers.triggers.data.converter.Converters
 data class BaseProEntity(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val todoId: Int = 0,
     @ColumnInfo(name = "trigger") val trigger: String = "",
-    @ColumnInfo(name = "description") val description: String = "",
+    @ColumnInfo(name = "desired_habit") val desiredHabit: String = "",
 
 //    @ColumnInfo(name = "trigger_name") val triggerName: String = "",
 //    @ColumnInfo(name = "desired_habit") val desiredHabit: String = "",

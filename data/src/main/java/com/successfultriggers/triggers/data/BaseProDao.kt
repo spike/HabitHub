@@ -47,8 +47,8 @@ interface BaseProDao {
     suspend fun findByTrigger(trigger: String): BaseProEntity?
 
     // Finding a BasePro by its description
-    @Query("SELECT * FROM basepro_table WHERE description LIKE :description")
-    suspend fun findByDescription(description: String): BaseProEntity?
+    @Query("SELECT * FROM basepro_table WHERE desired_habit LIKE :desiredHabit")
+    suspend fun findByDesiredHabit(desiredHabit: String): BaseProEntity?
 
     /* Finding a BasePro by its date
     @Query("SELECT * FROM basepro_table WHERE date LIKE :date")

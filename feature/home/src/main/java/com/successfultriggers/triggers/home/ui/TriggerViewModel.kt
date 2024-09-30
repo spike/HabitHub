@@ -30,9 +30,7 @@ class TriggerViewModel @Inject constructor(
             is TriggerEvent.AddItem -> {
                 addItem(event.name)
             }
-//            is TriggerEvent.AddTrigger -> {
-//                addTrigger(event.title, event.description)
-//            }
+
             is TriggerEvent.DeleteItem -> {
                 deleteItem(event.itemId)
             }
@@ -83,10 +81,10 @@ class TriggerViewModel @Inject constructor(
             }
         }
     }
-    private fun addTrigger(trigger: String, description: String) {
+    private fun addTrigger(trigger: String, desiredHabit: String, minimalAction: String) {
         viewModelScope.launch {
             try {
-                repository.insert(BasePro(trigger = trigger, description = description))
+                repository.insert(BasePro(trigger = trigger, desiredHabit = desiredHabit, minimalAction = minimalAction, color = 0))
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
                 _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")

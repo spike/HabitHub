@@ -6,7 +6,8 @@ typealias BasePro = BaseProEntity
 
 fun BaseProEntity.toBasePro(): BasePro {
     return BasePro(trigger = trigger,
-        description = description,
+        desiredHabit = desiredHabit,
+        minimalAction = minimalAction,
         color = color)
     //return this
     /*return BasePro(
@@ -28,7 +29,10 @@ fun BaseProEntity.toBasePro(): BasePro {
 typealias BaseProEntity = BasePro
 
 fun BasePro.toBaseProEntity(): BaseProEntity {
-    return BaseProEntity(trigger = trigger, description = description, color = color)
+    return BaseProEntity(trigger = trigger,
+        desiredHabit = desiredHabit,
+        minimalAction = minimalAction,
+        color = color)
 
    // return this
     /*return BaseProEntity(

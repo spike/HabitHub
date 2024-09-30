@@ -66,7 +66,9 @@ fun HomeCompose2(
             // Text(text = data[triggerId].todoId.toString())
             // Text(text = (triggerId+1).toString())
             Text(text = "trigger:${data[triggerId].trigger}")
-            Text(text = "description:${data[triggerId].description}")
+            Text(text = "desiredHabit:${data[triggerId].desiredHabit}")
+            Text(text = "minimalAction:${data[triggerId].minimalAction}")
+
             Text(text = "debug color:${data[triggerId].color.toString()}")
             // Color(color.toULong())
 //            Button(

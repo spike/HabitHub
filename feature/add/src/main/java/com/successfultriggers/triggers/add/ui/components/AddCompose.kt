@@ -110,6 +110,7 @@ fun AddCompose(
                     onEvent(TriggerEvent.AddTrigger(
                         newItemName,
                         desiredHabit,
+                        minimalAction,
                         selectedColor))
 //                    newItemName = ""
 //                    desiredHabit = ""
