@@ -64,7 +64,8 @@ fun HomeCompose(
                         },
                         navController = navController,
                        // triggerId = item.todoId
-                        triggerId = index
+                        triggerId = index,
+                        color = item.color
                     )
                 }
             }

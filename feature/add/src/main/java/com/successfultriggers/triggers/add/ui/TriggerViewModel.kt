@@ -37,7 +37,7 @@ class AddViewModel @Inject constructor(
                 addItem(event.trigger)
             }
             is TriggerEvent.AddTrigger -> {
-                addTrigger(event.trigger, event.description)
+                addTrigger(event.trigger, event.description, event.color)
             }
             is TriggerEvent.DeleteItem -> TODO()
             is TriggerEvent.OnItemClicked -> TODO()
@@ -80,10 +80,14 @@ class AddViewModel @Inject constructor(
             }
         }
     }
-    private fun addTrigger(trigger: String, description: String) {
+    private fun addTrigger(trigger: String,
+                           description: String,
+                           color: androidx.compose.ui.graphics.Color) {
         viewModelScope.launch {
             try {
-                repository.insert(BasePro(trigger = trigger, description = description))
+                repository.insert(BasePro(trigger = trigger,
+                    description = description,
+                    color = color.value.toLong()))
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
                 _uiState.value = AddUiState.Error(message = e.localizedMessage ?: "addTrigger error")

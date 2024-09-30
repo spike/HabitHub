@@ -107,7 +107,10 @@ fun AddCompose(
             onClick = {
                 if (newItemName.isNotBlank()) {
                     //onEvent(TriggerEvent.AddItem(newItemName))
-                    onEvent(TriggerEvent.AddTrigger(newItemName, desiredHabit))
+                    onEvent(TriggerEvent.AddTrigger(
+                        newItemName,
+                        desiredHabit,
+                        selectedColor))
 //                    newItemName = ""
 //                    desiredHabit = ""
                     navController.navigate(Screen.HomeScreen.route)

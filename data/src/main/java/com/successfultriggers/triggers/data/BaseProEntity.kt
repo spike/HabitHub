@@ -11,12 +11,12 @@ import com.successfultriggers.triggers.data.converter.Converters
 data class BaseProEntity(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val todoId: Int = 0,
     @ColumnInfo(name = "trigger") val trigger: String = "",
-    @ColumnInfo(name = "description") val description: String = "x",
+    @ColumnInfo(name = "description") val description: String = "",
 
 //    @ColumnInfo(name = "trigger_name") val triggerName: String = "",
 //    @ColumnInfo(name = "desired_habit") val desiredHabit: String = "",
     @ColumnInfo(name = "minimal_action") val minimalAction: String = "",
-    @ColumnInfo(name = "selected_color") val selectedColor: Long = 0xFF000000,
+    @ColumnInfo(name = "color") val color: Long = 0,
 
 
     //@ColumnInfo(name = "timestamp") val timestamp : ZonedDateTime = ZonedDateTime.now(),

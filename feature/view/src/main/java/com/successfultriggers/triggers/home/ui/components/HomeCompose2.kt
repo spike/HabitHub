@@ -61,6 +61,8 @@ fun HomeCompose2(
            // Text(text = (triggerId+1).toString())
             Text(text = "trigger:${data[triggerId].trigger}")
             Text(text = "description:${data[triggerId].description}")
+            Text(text = "debug color:${data[triggerId].color.toString()}")
+
             Button(
                 onClick = {
                     // onEvent(TriggerEvent2.DeleteItem(data[triggerId].todoId))

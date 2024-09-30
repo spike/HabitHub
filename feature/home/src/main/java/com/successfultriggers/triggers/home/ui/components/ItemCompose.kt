@@ -31,7 +31,8 @@ fun CompoundButton(
     secondaryText: String,    // Second text parameter (smaller and in caps)
     triggerId: Int,
     onClick: () -> Unit,
-    cornerRadius: Dp = 12.dp // Add a parameter for corner radius
+    cornerRadius: Dp = 12.dp, // Add a parameter for corner radius
+    color: Long
 ) {
     var isChecked by remember { mutableStateOf(false) }
 
@@ -39,7 +40,7 @@ fun CompoundButton(
         modifier = modifier
             .fillMaxWidth()
             .background(
-                color = Color(0xFF00BCD4), // Pastel color background
+                color = Color(color.toULong()), // Pastel color background
                 shape = RoundedCornerShape(cornerRadius) // Rounded corners
             )
 
@@ -94,6 +95,7 @@ fun CompoundButtonPreview() {
         primaryText = "Shoes in front of door",
         secondaryText = "1 DAY AGO",
         onClick = { /* Handle preview click */ },
-        triggerId = 0
+        triggerId = 0,
+        color = 0
     )
 }
