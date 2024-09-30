@@ -5,7 +5,8 @@ import com.successfultriggers.triggers.data.BaseProEntity
 typealias BasePro = BaseProEntity
 
 fun BaseProEntity.toBasePro(): BasePro {
-    return this
+    return BasePro(title = title, description = description)
+    //return this
     /*return BasePro(
         title = title,
         description = description,
@@ -25,7 +26,9 @@ fun BaseProEntity.toBasePro(): BasePro {
 typealias BaseProEntity = BasePro
 
 fun BasePro.toBaseProEntity(): BaseProEntity {
-    return this
+    return BaseProEntity(title = title, description = description)
+
+   // return this
     /*return BaseProEntity(
         title = title,
         description = description,

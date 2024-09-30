@@ -57,7 +57,7 @@ fun HomeCompose(
                 ) {
 
                     CompoundButton(
-                        primaryText = item.name,
+                        primaryText = item.title,
                         secondaryText = "1 DAY AGO",
                         onClick = {
                            // Log.d("HomeCompose", "Item clicked: ${index}")

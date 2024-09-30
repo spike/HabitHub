@@ -30,6 +30,9 @@ class TriggerViewModel @Inject constructor(
             is TriggerEvent.AddItem -> {
                 addItem(event.name)
             }
+//            is TriggerEvent.AddTrigger -> {
+//                addTrigger(event.title, event.description)
+//            }
             is TriggerEvent.DeleteItem -> {
                 deleteItem(event.itemId)
             }
@@ -70,10 +73,20 @@ class TriggerViewModel @Inject constructor(
         }
     }
 
-    private fun addItem(name: String) {
+    private fun addItem(title: String) {
         viewModelScope.launch {
             try {
-                repository.insert(BasePro(name = name))
+                repository.insert(BasePro(title = title))
+                onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
+            } catch (e: Exception) {
+                _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+    private fun addTrigger(title: String, description: String) {
+        viewModelScope.launch {
+            try {
+                repository.insert(BasePro(title = title, description = description))
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
                 _uiState.value = HomeUiState.Error(message = e.localizedMessage ?: "Unknown error")
