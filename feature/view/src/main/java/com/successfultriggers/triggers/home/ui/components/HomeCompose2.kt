@@ -1,5 +1,7 @@
 package com.successfultriggers.triggers.home.ui.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,7 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -54,22 +59,57 @@ fun HomeCompose2(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
         }
-        Column (modifier = Modifier.fillMaxSize(),
+        Column(
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-           // Text(text = data[triggerId].todoId.toString())
-           // Text(text = (triggerId+1).toString())
+            // Text(text = data[triggerId].todoId.toString())
+            // Text(text = (triggerId+1).toString())
             Text(text = "trigger:${data[triggerId].trigger}")
             Text(text = "description:${data[triggerId].description}")
             Text(text = "debug color:${data[triggerId].color.toString()}")
+            // Color(color.toULong())
+//            Button(
+//                modifier = modifier
+//                    .fillMaxWidth()
+//                    .background(
+//                        color = Color(data[triggerId].color.toULong()), // Pastel color background
+//                        shape = RoundedCornerShape(12.dp) // Rounded corners
+//                    ),
+//                onClick = {
+//                    // onEvent(TriggerEvent2.DeleteItem(data[triggerId].todoId))
+//                    navController?.navigate(com.successfultriggers.triggers.core.ui.Screen.HomeScreen.route)
+//                }
+//            ) {
+//                Text("Delete", color = MaterialTheme.colorScheme.onError)
+//            }
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = Color(data[triggerId].color.toULong()), // Pastel color background
+                        shape = RoundedCornerShape(12.dp) // Rounded corners
+                    )
+                    .clickable {
+                        // onEvent(TriggerEvent2.DeleteItem(data[triggerId].todoId))
+                        navController?.navigate(com.successfultriggers.triggers.core.ui.Screen.HomeScreen.route)
 
-            Button(
-                onClick = {
-                    // onEvent(TriggerEvent2.DeleteItem(data[triggerId].todoId))
-                    navController?.navigate(com.successfultriggers.triggers.core.ui.Screen.HomeScreen.route)
-                }
+                    }
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text("Delete", color = MaterialTheme.colorScheme.onError)
+                // Text section with two text parameters
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = "Delete",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White // Text in white
+                    )
+                }
             }
         }
     }
