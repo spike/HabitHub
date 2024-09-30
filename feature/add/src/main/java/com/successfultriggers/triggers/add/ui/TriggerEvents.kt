@@ -4,8 +4,8 @@ sealed class TriggerEvent {
     object LoadData : TriggerEvent()
     data class UpdateSetting(val settingKey: String, val settingValue: String) : TriggerEvent()
     object DeleteAllEntries : TriggerEvent()  // New event to delete all entries
-    data class AddItem(val title: String) : TriggerEvent()
-    data class AddTrigger(val title: String, val description: String) : TriggerEvent()
+    data class AddItem(val trigger: String) : TriggerEvent()
+    data class AddTrigger(val trigger: String, val description: String) : TriggerEvent()
 
 
     data class DeleteItem(val itemId: Int) : TriggerEvent()

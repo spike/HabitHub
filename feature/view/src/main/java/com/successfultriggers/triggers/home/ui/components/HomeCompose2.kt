@@ -59,7 +59,7 @@ fun HomeCompose2(
         ) {
            // Text(text = data[triggerId].todoId.toString())
            // Text(text = (triggerId+1).toString())
-            Text(text = "title:${data[triggerId].title}")
+            Text(text = "trigger:${data[triggerId].trigger}")
             Text(text = "description:${data[triggerId].description}")
             Button(
                 onClick = {

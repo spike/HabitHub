@@ -42,9 +42,9 @@ interface BaseProDao {
     @Query("SELECT * FROM basepro_table WHERE id = :id")
     suspend fun findById(id: Int): BaseProEntity?
 
-    // Finding a BasePro by its title
-    @Query("SELECT * FROM basepro_table WHERE title LIKE :title")
-    suspend fun findByTitle(title: String): BaseProEntity?
+    // Finding a BasePro by its trigger
+    @Query("SELECT * FROM basepro_table WHERE trigger LIKE :trigger")
+    suspend fun findByTrigger(trigger: String): BaseProEntity?
 
     // Finding a BasePro by its description
     @Query("SELECT * FROM basepro_table WHERE description LIKE :description")

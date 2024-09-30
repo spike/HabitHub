@@ -10,7 +10,7 @@ import com.successfultriggers.triggers.data.converter.Converters
 @TypeConverters(Converters::class)
 data class BaseProEntity(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val todoId: Int = 0,
-    @ColumnInfo(name = "title") val title: String = "",
+    @ColumnInfo(name = "trigger") val trigger: String = "",
     @ColumnInfo(name = "description") val description: String = "x",
 
 //    @ColumnInfo(name = "trigger_name") val triggerName: String = "",

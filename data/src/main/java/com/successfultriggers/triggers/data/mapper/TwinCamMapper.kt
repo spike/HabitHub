@@ -5,10 +5,10 @@ import com.successfultriggers.triggers.data.BaseProEntity
 typealias BasePro = BaseProEntity
 
 fun BaseProEntity.toBasePro(): BasePro {
-    return BasePro(title = title, description = description)
+    return BasePro(trigger = trigger, description = description)
     //return this
     /*return BasePro(
-        title = title,
+        trigger = trigger,
         description = description,
         //@ColumnInfo(name = "timestamp") val timestamp : ZonedDateTime = ZonedDateTime.now(),
         timestamp = timestamp, //= Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
@@ -26,11 +26,11 @@ fun BaseProEntity.toBasePro(): BasePro {
 typealias BaseProEntity = BasePro
 
 fun BasePro.toBaseProEntity(): BaseProEntity {
-    return BaseProEntity(title = title, description = description)
+    return BaseProEntity(trigger = trigger, description = description)
 
    // return this
     /*return BaseProEntity(
-        title = title,
+        trigger = trigger,
         description = description,
         //@ColumnInfo(name = "timestamp") val timestamp : ZonedDateTime = ZonedDateTime.now(),
         timestamp = timestamp, //= Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),

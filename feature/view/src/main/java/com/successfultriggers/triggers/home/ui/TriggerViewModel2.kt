@@ -69,10 +69,10 @@ class TriggerViewModel2 @Inject constructor(
         }
     }
 
-    private fun addItem(title: String) {
+    private fun addItem(trigger: String) {
         viewModelScope.launch {
             try {
-                repository.insert(BasePro(title = title))
+                repository.insert(BasePro(trigger = trigger))
                 onEvent(TriggerEvent2.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {
                 _uiState.value = HomeUiState2.Error(message = e.localizedMessage ?: "Unknown error")

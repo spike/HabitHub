@@ -152,7 +152,7 @@ fun ColorPickerDialog(onDismiss: () -> Unit, onColorSelected: (Color) -> Unit) {
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = { Text(text = "Pick a Color") },
+        title = { Text(text = "Color") },
         text = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
