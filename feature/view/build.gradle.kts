@@ -53,6 +53,11 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
 
+
+    implementation(libs.charts.android)
+
+
+
     // Hilt Dependency Injection
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)

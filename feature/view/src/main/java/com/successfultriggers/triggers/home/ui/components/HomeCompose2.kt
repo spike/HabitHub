@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,6 +26,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.hd.charts.BarChartView
+import com.hd.charts.common.model.ChartDataSet
+import com.hd.charts.style.BarChartDefaults
 import com.successfultriggers.triggers.data.BaseProEntity
 import com.successfultriggers.triggers.home.ui.TriggerEvent2
 
@@ -69,7 +71,9 @@ fun HomeCompose2(
             Text(text = "desiredHabit:${data[triggerId].desiredHabit}")
             Text(text = "minimalAction:${data[triggerId].minimalAction}")
 
-            Text(text = "debug color:${data[triggerId].color.toString()}")
+            CustomBarChart(color = Color(data[triggerId].color.toULong()))
+
+            // Text(text = "debug color:${data[triggerId].color.toString()}")
             // Color(color.toULong())
 //            Button(
 //                modifier = modifier
@@ -115,6 +119,22 @@ fun HomeCompose2(
             }
         }
     }
+}
+
+@Composable
+private fun CustomBarChart(color: Color = Color.Red) {
+    val style = BarChartDefaults.style(
+        barColor = color,
+        space = 12.dp,
+    )
+
+    BarChartView(
+        dataSet = ChartDataSet(
+            items = listOf(0f, 2f, 1f, 4f, 3f, 0f, 2f),
+            title = "Bar Chart"
+        ),
+        style = style
+    )
 }
 
 // These will be moved to a common directory.
