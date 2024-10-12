@@ -34,7 +34,7 @@ fun HomeCompose(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Triggers",
+                text = "Habit Hub",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
