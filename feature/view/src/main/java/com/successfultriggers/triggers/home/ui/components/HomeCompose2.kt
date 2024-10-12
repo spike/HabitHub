@@ -130,8 +130,8 @@ private fun CustomBarChart(color: Color = Color.Red) {
 
     BarChartView(
         dataSet = ChartDataSet(
-            items = listOf(0f, 2f, 1f, 4f, 3f, 0f, 2f),
-            title = "Bar Chart"
+            items = listOf(1f, 2f, 1f, 3f, 2f, 0f, 0f),
+            title = "  M     T      W      T       F      S      S"
         ),
         style = style
     )
