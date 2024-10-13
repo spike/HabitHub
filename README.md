@@ -1,4 +1,4 @@
-# Habit Hub Android Application
+# Habit Hub Application
 
 This project is using Jetpack Compose and Modern Android Development (MAD)
 
