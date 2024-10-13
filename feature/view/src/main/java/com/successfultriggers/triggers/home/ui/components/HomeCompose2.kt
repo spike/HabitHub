@@ -54,7 +54,7 @@ fun HomeCompose2(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Triggers View databaseId:${data[triggerId].todoId}",
+                text = data[triggerId].trigger,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary,
@@ -67,9 +67,9 @@ fun HomeCompose2(
         ) {
             // Text(text = data[triggerId].todoId.toString())
             // Text(text = (triggerId+1).toString())
-            Text(text = "trigger:${data[triggerId].trigger}")
-            Text(text = "desiredHabit:${data[triggerId].desiredHabit}")
-            Text(text = "minimalAction:${data[triggerId].minimalAction}")
+//            Text(text = "trigger:${data[triggerId].trigger}")
+//            Text(text = "desiredHabit:${data[triggerId].desiredHabit}")
+//            Text(text = "minimalAction:${data[triggerId].minimalAction}")
 
             CustomBarChart(color = Color(data[triggerId].color.toULong()))
 

@@ -44,7 +44,7 @@ fun AddCompose(
         TextField(
             value = newItemName,
             onValueChange = { newItemName = it },
-            label = { Text("Trigger Name") },
+            label = { Text("Habit Name") },
             singleLine = true,
             trailingIcon = {
                 IconButton(onClick = { isDialogOpen = true }) {
@@ -65,42 +65,42 @@ fun AddCompose(
         )
 
         // Desired Habit input field
-        TextField(
-            value = desiredHabit,
-            onValueChange = { desiredHabit = it },
-            label = { Text("Desired Habit") },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Sentences
-            ),
-            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-                cursorColor = MaterialTheme.colorScheme.primary
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+//        TextField(
+//            value = desiredHabit,
+//            onValueChange = { desiredHabit = it },
+//            label = { Text("Desired Habit") },
+//            singleLine = true,
+//            keyboardOptions = KeyboardOptions.Default.copy(
+//                keyboardType = KeyboardType.Text,
+//                capitalization = KeyboardCapitalization.Sentences
+//            ),
+//            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = MaterialTheme.colorScheme.surface,
+//                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+//                cursorColor = MaterialTheme.colorScheme.primary
+//            ),
+//            modifier = Modifier.fillMaxWidth()
+//        )
 
         // Minimal Action input field
-        TextField(
-            value = minimalAction,
-            onValueChange = { minimalAction = it },
-            label = { Text("Minimal Action") },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Sentences
-            ),
-            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-                cursorColor = MaterialTheme.colorScheme.primary
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+//        TextField(
+//            value = minimalAction,
+//            onValueChange = { minimalAction = it },
+//            label = { Text("Minimal Action") },
+//            singleLine = true,
+//            keyboardOptions = KeyboardOptions.Default.copy(
+//                keyboardType = KeyboardType.Text,
+//                capitalization = KeyboardCapitalization.Sentences
+//            ),
+//            textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = MaterialTheme.colorScheme.surface,
+//                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+//                cursorColor = MaterialTheme.colorScheme.primary
+//            ),
+//            modifier = Modifier.fillMaxWidth()
+//        )
 
         // Add Trigger button
         Button(
@@ -109,11 +109,13 @@ fun AddCompose(
                     //onEvent(TriggerEvent.AddItem(newItemName))
                     onEvent(TriggerEvent.AddTrigger(
                         newItemName,
-                        desiredHabit,
-                        minimalAction,
                         selectedColor))
-//                    newItemName = ""
-//                    desiredHabit = ""
+//                    onEvent(TriggerEvent.AddTrigger(
+//                        newItemName,
+//                        desiredHabit,
+//                        minimalAction,
+//                        selectedColor))
+
                     navController.navigate(Screen.HomeScreen.route)
                 }
             },

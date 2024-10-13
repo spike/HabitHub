@@ -37,7 +37,7 @@ class AddViewModel @Inject constructor(
                 addItem(event.trigger)
             }
             is TriggerEvent.AddTrigger -> {
-                addTrigger(event.trigger, event.desiredHabit, event.minimalAction, event.color)
+                addTrigger(event.trigger, event.color)
             }
             is TriggerEvent.DeleteItem -> TODO()
             is TriggerEvent.OnItemClicked -> TODO()
@@ -81,14 +81,10 @@ class AddViewModel @Inject constructor(
         }
     }
     private fun addTrigger(trigger: String,
-                           desiredHabit: String,
-                           minimalAction: String,
                            color: androidx.compose.ui.graphics.Color) {
         viewModelScope.launch {
             try {
                 repository.insert(BasePro(trigger = trigger,
-                    desiredHabit = desiredHabit,
-                    minimalAction = minimalAction,
                     color = color.value.toLong()))
                 onEvent(TriggerEvent.LoadData)  // Refresh the data after adding
             } catch (e: Exception) {

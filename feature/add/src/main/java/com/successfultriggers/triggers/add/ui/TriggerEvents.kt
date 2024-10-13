@@ -6,8 +6,6 @@ sealed class TriggerEvent {
     object DeleteAllEntries : TriggerEvent()  // New event to delete all entries
     data class AddItem(val trigger: String) : TriggerEvent()
     data class AddTrigger(val trigger: String,
-                          val desiredHabit: String,
-                          val minimalAction: String,
                           val color: androidx.compose.ui.graphics.Color) : TriggerEvent()
 
 
