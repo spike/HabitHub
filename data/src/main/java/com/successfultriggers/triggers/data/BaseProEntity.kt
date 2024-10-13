@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.successfultriggers.triggers.data.converter.Converters
+import java.time.ZonedDateTime
 
 @Entity(tableName = "basepro_table")
 @TypeConverters(Converters::class)
@@ -17,9 +18,8 @@ data class BaseProEntity(
 //    @ColumnInfo(name = "desired_habit") val desiredHabit: String = "",
     @ColumnInfo(name = "minimal_action") val minimalAction: String = "",
     @ColumnInfo(name = "color") val color: Long = 0,
+    @ColumnInfo(name = "last_updated") val lastUpdated: Long = System.currentTimeMillis() // Stores epoch milliseconds
 
-
-    //@ColumnInfo(name = "timestamp") val timestamp : ZonedDateTime = ZonedDateTime.now(),
     //@ColumnInfo(name = "date") val timestamp: kotlinx.datetime.LocalDateTime? = null,
     // kotlinx.datetime.Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
     /*@ColumnInfo(name = "lat") val lat: Double = 0.0,

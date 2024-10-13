@@ -13,6 +13,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.successfultriggers.triggers.home.ui.TriggerEvent
 import com.successfultriggers.triggers.data.BaseProEntity
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 @Composable
 fun HomeCompose(
@@ -55,10 +58,12 @@ fun HomeCompose(
                         .clickable { onEvent(TriggerEvent.OnItemClicked(item.todoId)) },
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
+                    val zonedDateTime = ZonedDateTime.ofInstant(Instant.ofEpochMilli(data[index].lastUpdated), ZoneId.systemDefault())
 
                     CompoundButton(
                         primaryText = item.trigger,
-                        secondaryText = "1 DAY AGO",
+                        secondaryText = zonedDateTime.toString(),
+                       // secondaryText = "1 DAY AGO",
                         onClick = {
                            // Log.d("HomeCompose", "Item clicked: ${index}")
                         },

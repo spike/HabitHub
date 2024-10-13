@@ -8,7 +8,8 @@ fun BaseProEntity.toBasePro(): BasePro {
     return BasePro(trigger = trigger,
         desiredHabit = desiredHabit,
         minimalAction = minimalAction,
-        color = color)
+        color = color,
+        lastUpdated = lastUpdated)
     //return this
     /*return BasePro(
         trigger = trigger,
@@ -32,7 +33,8 @@ fun BasePro.toBaseProEntity(): BaseProEntity {
     return BaseProEntity(trigger = trigger,
         desiredHabit = desiredHabit,
         minimalAction = minimalAction,
-        color = color)
+        color = color,
+        lastUpdated = lastUpdated)
 
    // return this
     /*return BaseProEntity(

@@ -2,19 +2,25 @@ package com.successfultriggers.triggers.data.converter
 
 import android.net.Uri
 import androidx.room.TypeConverter
-//import kotlinx.datetime.LocalDateTime
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+
 
 class Converters {
 
-    /*@TypeConverter
-    fun fromTimestrap(dateString: String?): LocalDateTime? {
-        return dateString?.let { LocalDateTime.parse(dateString) }
+    @TypeConverter
+    fun fromZonedDateTime(zonedDateTime: ZonedDateTime?): Long? {
+        return zonedDateTime?.toInstant()?.toEpochMilli()
     }
 
     @TypeConverter
-    fun toDateString(date: LocalDateTime?): String? {
-        return date?.toString()
-    }*/
+    fun toZonedDateTime(epochMillis: Long?): ZonedDateTime? {
+        return epochMillis?.let {
+            ZonedDateTime.ofInstant(Instant.ofEpochMilli(it), ZoneId.systemDefault())
+        }
+    }
 
     @TypeConverter
     fun fromString(value: String?): Uri? {

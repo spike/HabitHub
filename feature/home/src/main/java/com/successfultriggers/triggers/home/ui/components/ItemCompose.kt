@@ -74,7 +74,7 @@ fun CompoundButton(
         IconButton(
             onClick = {
                 isChecked = !isChecked
-                Log.d("CompoundButton", "Icon clicked: $primaryText")
+               // Log.d("CompoundButton", "Icon clicked: $primaryText")
                       },
             modifier = Modifier.size(36.dp)
         ) {
