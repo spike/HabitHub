@@ -1,5 +1,6 @@
 package com.successfultriggers.triggers.home.ui.components
 
+import android.text.format.DateUtils
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -62,18 +63,40 @@ fun HomeCompose(
 
                     CompoundButton(
                         primaryText = item.trigger,
-                        secondaryText = zonedDateTime.toString(),
-                       // secondaryText = "1 DAY AGO",
+                        secondaryText = formatTimeAgo(zonedDateTime),
+                        // secondaryText = "1 DAY AGO",
                         onClick = {
-                           // Log.d("HomeCompose", "Item clicked: ${index}")
+                            // onEvent(TriggerEvent.OnTriggerClicked(item))
                         },
                         navController = navController,
-                       // triggerId = item.todoId
+                        // triggerId = item.todoId
                         triggerId = index,
                         color = item.color
                     )
                 }
             }
+        }
+    }
+}
+
+
+fun formatTimeAgo(zonedDateTime: ZonedDateTime): String {
+    val now = ZonedDateTime.now(ZoneId.systemDefault()) // Get current time in system default zone
+    val timeDiff = now.toInstant().toEpochMilli() - zonedDateTime.toInstant().toEpochMilli()
+
+    return when {
+        timeDiff < DateUtils.MINUTE_IN_MILLIS -> "JUST NOW"
+        timeDiff < DateUtils.HOUR_IN_MILLIS -> {
+            val minutes = (timeDiff / DateUtils.MINUTE_IN_MILLIS).toInt()
+            "$minutes ${if (minutes == 1) "MINUTE" else "MINUTES"} AGO"
+        }
+        timeDiff < DateUtils.DAY_IN_MILLIS -> {
+            val hours = (timeDiff / DateUtils.HOUR_IN_MILLIS).toInt()
+            "$hours ${if (hours == 1) "HOUR" else "HOURS"} AGO"
+        }
+        else -> {
+            val days = (timeDiff / DateUtils.DAY_IN_MILLIS).toInt()
+            "$days ${if (days == 1) "DAY" else "DAYS"} AGO"
         }
     }
 }
